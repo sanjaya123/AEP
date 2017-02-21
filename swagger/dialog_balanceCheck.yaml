@@ -1,0 +1,45 @@
+---
+swagger: '2.0'
+info:
+  version: v3.0.0
+  title: BalanceCheck API
+  description: API for check available charging balance on specific MSISDN
+ 
+
+schemes:
+  - http
+
+basePath: /balanceCheck
+
+produces:
+  - application/json
+
+paths:
+  /{number}:
+    get:
+      summary: Get balance information
+      description: This method allows you to get the balance information of the number.
+      parameters:           
+        - name: number
+          description: balance check number
+          in: path
+          required: true
+          type: string
+        
+      responses:
+        200:
+          description: OK
+          examples:
+            application/json: |-
+              {
+                "endUserId": "9476*******",
+                "referenceCode": "DLG29278319-148******",
+                "accountInfo": [
+                  {
+                    "accountType": "POSTPAID",
+                    "accountStatus": "ACTIVE",
+                    "creditLimit": 201.76,
+                    "balance": 201.76
+                  }
+                ]
+              }         
